@@ -31,8 +31,10 @@ public class FixerAppl {
     private static double convertCurrency() {
 	HttpHeaders headers = new HttpHeaders();
 	headers.add("apikey", apiKey);
-	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl).queryParam("from", from)
-		.queryParam("to", to).queryParam("amount", amount);
+	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl)
+																		.queryParam("from", from)
+																		.queryParam("to", to)
+																		.queryParam("amount", amount);
 	RequestEntity<String> request = new RequestEntity<>(headers, HttpMethod.GET, builder.build().toUri());
 	ResponseEntity<ResponseFixerDto> responseEntity = restTemplate.exchange(request, ResponseFixerDto.class);
 	double result = responseEntity.getBody().getResult();
@@ -55,7 +57,7 @@ public class FixerAppl {
 
 	// from currency
 	System.out.println("Enter from which currency: ");
-	String from = br.readLine().toUpperCase();
+	from = br.readLine().toUpperCase();
 	while (from.length() != 3) {
 	    System.out.println("Check currency code and try again");
 	    from = br.readLine().toUpperCase();
@@ -63,7 +65,7 @@ public class FixerAppl {
 
 	// to currency
 	System.out.println("to which currency: ");
-	String to = br.readLine().toUpperCase();
+	to = br.readLine().toUpperCase();
 	while (to.length() != 3) {
 	    System.out.println("Check currency code and try again");
 	    to = br.readLine().toUpperCase();

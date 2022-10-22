@@ -25,7 +25,7 @@ public class FixerAppl {
     public static void main(String[] args) throws IOException {
 	Menu();
 	double res = convertCurrency();
-	System.out.println(res+ " res");
+	System.out.println(amount + " " + from + " = " + res + " " + to);
     }
 
     private static double convertCurrency() {
